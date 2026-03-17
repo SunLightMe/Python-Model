@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/pretty/add/" target="_blank">
+                新建靓号
+            </a>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">靓号列表</div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>号码</th>
+                    <th>价格</th>
+                    <th>级别</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td> {{ obj.mobile }} </td>
+                        <td> {{ obj.price }} </td>
+                        <td> {{ obj.get_level_display }} </td>
+                        <td> {{ obj.get_status_display }} </td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="#">编辑<a>
+                            <a class="btn btn-primary btn-xs" href="#">删除<a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
